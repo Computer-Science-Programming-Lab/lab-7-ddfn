@@ -1,0 +1,90 @@
+#Andrew DeFran
+#2/29/2020
+#lab7
+#Itauma
+
+#import statements
+import math
+ 
+#global variables
+
+#functions
+#user input function
+def userInput():
+    userin = int(input("please enter an integer greater than zero: "))
+
+    #validation check
+    while (userin < 0 ):
+        print("\nError: invalid input") 
+        userin = int(input("please enter an integer greater than zero: "))
+
+    return userin
+
+#problem 1: write a function that takes positive integer input and returns
+#it's factors as a positive array.
+def factorsOfNumber(a):
+
+    #blank array
+    array = []
+
+    #loop up to the number and check if number divides then add factor to array
+    for i in range(1, a + 1):
+        if (a % i == 0):
+            array.append(i)
+
+    return array
+
+#problem 2: polyeval takes an array and an x value and calculates using
+#polynomial representation
+def polyEval(a, b):
+
+    #blank variables
+    total = 0
+    counter = 0
+    
+    #loop throught the list and perform calculations
+    for i in range(0,len(a)):
+        #sum the products as you go through the list
+        total += a[i] * b**counter
+        
+        #increment counter
+        counter +=1
+
+    return total
+
+#problem 3: congruence test. have the function return true. three params a,b,m
+# if a(mod m ) = b (mod m) return true else false 
+def congruence(a,b,m):
+
+    if ( a % m == b % m ):
+        return True
+    else:
+        return False
+
+
+def main():
+    #welcome
+    print("\nHello and welcome to my lab app!")
+
+    #problem 1
+    userin = userInput()
+    print("the factors of " + str(userin) + " are: " + str(factorsOfNumber(userin)))
+
+    #problem 2
+    testlist = [1,2,3,4]
+    xvalue = 2
+
+    print("\nThe coefficients are " + str(testlist) + " and x is " + str(xvalue))
+    print("The calculation for the polynomial of degree " + str(len(testlist)) + " given the parameters is: " + str(polyEval(testlist, xvalue)))
+
+    #problem 3
+    a = userInput()
+    b = userInput()
+    m = userInput()
+
+    print("\nGiven " + str(a) + ", " + str(b) + " and " + str(m) + " congruence is: " + str(congruence(a,b,m)))
+
+    #end of app message
+    print("\nThanks for coming! End of App")
+
+main()
